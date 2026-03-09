@@ -1,0 +1,58 @@
+Fichier .gitignore pour un projet Rasa/RAG
+
+----------------------------------------------------
+
+1. Modèles, Cache et Environnement Python (CRITIQUE)
+
+----------------------------------------------------
+
+Modèles entraînés (.tar.gz). Ne jamais versionner les modèles lourds.
+
+/models/*
+!/models/.gitkeep
+
+Environnement virtuel (créé par Python/pip)
+
+/venv
+/.venv
+
+Fichiers de cache Rasa NLU (spécifique à l'OS/installation)
+
+/.rasa/cache
+/.rasa/tmp
+
+Fichiers de cache Python
+
+pycache/
+*.pyc
+
+----------------------------------------------------
+
+2. Données et Logs Sensibles
+
+----------------------------------------------------
+
+Clés API/Variables d'environnement (NE JAMAIS PARTAGER!)
+
+.env
+
+Base de données d'embeddings (reconstruite via setup_db.py)
+
+product_embeddings.db
+products.json
+
+Logs de conversation Rasa
+
+rasa_core_logs.log
+*.log
+
+----------------------------------------------------
+
+3. Fichiers Systèmes et IDE
+
+----------------------------------------------------
+
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

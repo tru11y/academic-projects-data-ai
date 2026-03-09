@@ -1,0 +1,77 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - ask_price
+  - ask_availability
+  - recommend_product
+  - compare_products
+  - ask_specs
+  - cancel
+  - confirm_order
+  - thanks
+  - llm_needed
+  - order_product
+  - search_product
+  - affirm                   
+
+entities:
+  - sku
+  - product_name
+  - product_type
+
+slots:
+  product_context:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+  last_shown_products:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+  selected_sku:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+  product_type:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: product_type
+  selected_product_name:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: product_name
+
+responses:
+  utter_greet:
+    - text: "Bonjour Je suis le conseiller produit. En quoi puis-je t'aider aujourd'hui ?"
+  utter_goodbye:
+    - text: "Merci, bonne journée !"
+  utter_ask_sku:
+    - text: "Peux-tu me donner le SKU du produit ?"
+  utter_thanks:
+    - text: "Merci pour ton message "
+  utter_please_rephrase:
+    - text: "Désolé, je n'ai pas compris. Pourriez-vous reformuler votre demande, s'il vous plaît ?"
+  
+  utter_checkout_prompt:
+    - text: "Parfait ! Pour finaliser la réservation, puis-je avoir le code SKU (ex: REF-2024-A1) de votre article ?"
+
+actions:
+  - action_get_price
+  - action_check_availability
+  - action_gpt_response
+  - action_show_product
+  - action_handle_order 
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

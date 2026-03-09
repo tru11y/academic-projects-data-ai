@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rasa:*)",
+      "Bash(tail:*)",
+      "Bash(cd \"C:/Users/PC/epitech_projects/C-DAT-900-ABJ-2-1-ecp-13\" && python -m rasa_sdk --actions actions --port 5055 2>&1)",
+      "Bash(c:/users/pc/appdata/local/programs/python/python38/python.exe:*)",
+      "Bash(netstat -ano | grep \":5055\\\\|:5005\" 2>&1)",
+      "Bash(tasklist:*)",
+      "Bash(powershell Get-Process -Id 18348 | Select-Object Name,Id,CommandLine:*)",
+      "Bash(powershell Stop-Process -Id 18348 -Force:*)",
+      "Bash(cd \"C:/Users/PC/epitech_projects/C-DAT-900-ABJ-2-1-ecp-13\" && \"C:/Users/PC/AppData/Roaming/Python/Python311/Scripts/streamlit.exe\" run app.py --server.port 8501 2>&1)",
+      "Bash(netstat -ano | grep \":8501\" 2>&1)",
+      "Bash(powershell Get-Process -Id 48464 | Select-Object Name,Id:*)",
+      "Bash(head:*)",
+      "Bash(curl:*)",
+      "Bash(powershell:*)"
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+
+# rasa==3.6.21
+# rasa-sdk==3.6.2
+# openai>=1.0.0
+# python-dotenv
+# numpy
+# websockets==10.4
+# requests
+rasa-sdk==3.6.2 # Assurez-vous que cette version correspond à votre Rasa Core
+openai
+numpy
+python-dotenv
+# Aucune version spécifique n'est nécessaire pour sqlite3, qui est standard

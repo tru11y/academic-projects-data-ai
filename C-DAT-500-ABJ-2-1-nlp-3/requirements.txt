@@ -1,0 +1,11 @@
+nltk
+numpy
+pandas
+matplotlib
+scikit-learn
+wordcloud   requests
+dateparser
+bs4
+pandas
+seaborn
+spacy

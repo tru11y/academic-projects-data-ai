@@ -1,0 +1,43 @@
+# docker-compose.yml - VERSION CORRIGÉE POUR L'ENTRAÎNEMENT (Cache désactivé)
+
+services:
+  # ----------------------------------------------------
+  # 1. Service Rasa Server (Entraînement)
+  # ----------------------------------------------------
+  rasa-server:
+    user: root
+    image: rasa/rasa:3.6.2 
+    container_name: rasa-server
+    ports:
+      - "5005:5005"
+    volumes:
+      - ./:/app
+    environment:
+      # NOUVEAU : Désactiver le cache Rasa pour contourner les problèmes de permission d'écriture
+      - RASA_CACHE_DIR=/tmp/rasa_cache # Déplace le cache vers un dossier non monté
+      - RASA_CORE_CACHE_LOCATION=/tmp/core_cache
+      - SQLALCHEMY_DATABASE_URI=sqlite:////tmp/rasa_db.db # Déplace la base de données interne hors du volume monté
+    command:
+      - train
+      - --force
+    
+  # ----------------------------------------------------
+  # 2. Service Actions Server (Logique métier personnalisée)
+  # ----------------------------------------------------
+  rasa-actions:
+    container_name: rasa-actions
+    build:
+      context: .
+      dockerfile: Dockerfile-actions
+    ports:
+      - "5055:5055"
+    volumes:
+      - ./actions:/app/actions
+      - ./products.json:/app/products.json
+      - ./product_embeddings.db:/app/product_embeddings.db
+    command: 
+      - python
+      - -m
+      - rasa_sdk
+      - --actions 
+      - actions

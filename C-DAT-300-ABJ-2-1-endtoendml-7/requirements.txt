@@ -1,0 +1,11 @@
+kafka-python
+praw
+jsons
+scikit-learn
+regex
+WordCloud
+numpy
+nltk
+stopwords
+psycopg2
+pandas

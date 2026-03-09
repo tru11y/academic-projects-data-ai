@@ -1,0 +1,71 @@
+version: "3.1"
+
+rules:
+  - rule: Dire bonjour
+    steps:
+      - intent: greet
+      - action: utter_greet
+
+  - rule: Dire au revoir
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
+
+  # --- DÉCLENCHEURS GPT (Recherche, Prix, Aide) ---
+  
+  - rule: Recherche Produit via GPT
+    steps:
+      - intent: search_product
+      - action: action_gpt_response
+
+  - rule: Aide LLM via GPT
+    steps:
+      - intent: llm_needed
+      - action: action_gpt_response
+
+  - rule: Demander le prix
+    steps:
+      - intent: ask_price
+      - action: action_gpt_response
+
+  - rule: Demander disponibilité
+    steps:
+      - intent: ask_availability
+      - action: action_gpt_response
+
+  - rule: Comparer des produits
+    steps:
+      - intent: compare_products
+      - action: action_gpt_response
+
+  - rule: Demander une recommandation
+    steps:
+      - intent: recommend_product
+      - action: action_gpt_response
+
+  # --- RÈGLE CRITIQUE D'ACHAT (GÈRE 'AFFIRM' ET 'ORDER') ---
+  # C'est ici que la magie opère pour la vente
+  
+  - rule: Gérer la commande ou l'affirmation du client
+    steps:
+      - or:
+        - intent: order_product # "Je veux acheter le Dell XPS"
+        - intent: affirm        # "Oui" (après une proposition)
+      - action: action_handle_order
+  
+  # --- FIN DE FLUX : Afficher Produit via SKU ---
+  - rule: Afficher détails via SKU (Finalisation)
+    steps:
+      - intent: inform_sku
+      - action: action_show_product
+  # -------------------------------------------------
+
+  - rule: Remercier
+    steps:
+      - intent: thanks
+      - action: utter_thanks
+
+  - rule: Fallback (Si le bot est perdu)
+    steps:
+      - intent: nlu_fallback
+      - action: utter_please_rephrase

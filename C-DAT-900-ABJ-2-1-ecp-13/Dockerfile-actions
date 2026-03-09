@@ -1,0 +1,20 @@
+# Dockerfile-actions
+
+# Base image (Python est nécessaire pour les actions)
+FROM python:3.9-slim
+
+# Définition du répertoire de travail
+WORKDIR /app
+
+# Copie et installation des dépendances des actions
+# Assurez-vous que 'requirements-actions.txt' contient 'rasa-sdk' et vos autres dépendances.
+COPY requirements-actions.txt .
+RUN pip install --no-cache-dir -r requirements-actions.txt
+
+# Copie du code d'action et des fichiers de données (ces fichiers étaient dans vos logs)
+COPY actions/ /app/actions/
+COPY products.json /app/
+COPY product_embeddings.db /app/
+
+# Le port d'écoute par défaut du Rasa Action Server est 5055
+EXPOSE 5055

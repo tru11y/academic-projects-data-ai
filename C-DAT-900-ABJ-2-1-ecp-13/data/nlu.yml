@@ -1,0 +1,153 @@
+version: "3.1"
+
+nlu:
+  - intent: greet
+    examples: |
+      - bonjour
+      - salut
+      - bonsoir
+      - coucou
+      - hey
+      - hello
+      - yo
+
+  - intent: goodbye
+    examples: |
+      - au revoir
+      - a plus
+      - ciao
+      - bye
+      - bonne journée
+
+  - intent: ask_price
+    examples: |
+      - quel est le prix du [RTX 4070](product_name)
+      - combien coute le [MSI gaming laptop](product_name)
+      - prix du [SSD 1TB NVMe](product_name)
+
+  - intent: ask_availability
+    examples: |
+      - est-ce que le [HP 15](product_name) est en stock
+      - vous avez le [Logitech G502](product_name)
+
+  - intent: recommend_product
+    examples: |
+      - je veux un [pc gamer](product_type) pour 1000€
+      - recommande moi un [SSD NVMe 1TB](product_name)
+      - je veux un ordinateur pour le bureau
+      - tu me conseilles quoi comme produit
+      
+  - intent: compare_products
+    examples: |
+      - compare [Kingston A2000](product_name) et [Samsung 980 Pro](product_name)
+
+  - intent: order_product
+    examples: |
+      - je veux acheter le [SKU1234](sku)
+      - reserve le [SKU1234](sku)
+      - le [dell xps 13](product_name) svp
+      - je veux payer le [dell xps](product_name)
+      - je veux commander ce [produit](product_name)
+      - je prends le numéro [un](product_name)
+      - je confirme le [dell xps 13](product_name)
+      - je veux le [1](product_name)
+      - c'est le [premier](product_name)
+      - je le prends
+      - je veux l'acheter
+
+  - intent: llm_needed
+    examples: |
+      - aide moi à choisir
+      - que me conseilles tu pour jouer et streaming
+      - explique moi les différences entre ssd et nvme
+
+  - intent: search_product
+    examples: |
+      - je cherche un [ordinateur](product_type)
+      - vous avez des [téléphones](product_type) ?
+      - je veux un [laptop](product_type)
+      - quel [ordinateur](product_type) je peux prendre ?
+      - mo j'ai besoin de [téléphone](product_type)
+      - je veu un [ordit](product_type) portable
+      - [tel](product_type) portable le prix
+      - montrez moi les [tablettes](product_type)
+      - tu as koi comme [produit](product_type)
+      - cherche moi le [prix](product_type) d'un [téléfone](product_type)
+      - un [telephone](product_type) moins cher
+      - je veux un [PC](product_type)
+      - je veux un [ordinateur](product_type)
+      - un [PC](product_type)
+      - [PC](product_type)
+      - J'ai besoin d'un [ordi](product_type)
+      - Je veux une [bécane](product_type)
+      - Montre moi les [machines](product_type)
+
+  - intent: ask_payment_method
+    examples: |
+      - comment je paye
+      - comment on fait pour payer
+      - c'est quoi le moyen de paiement
+      - je paye comment
+      - on passe a la caisse
+      - je veux payer par orange money
+      - quels sont les moyens de paiement ?
+      - paiement
+      - je dois payer ou ?
+
+  - intent: inform_payment_done
+    examples: |
+      - c'est payé
+      - j'ai effectué le paiement
+      - c'est fait
+      - voila le paiement
+      - paiement envoyé
+
+  - intent: affirm
+    examples: |
+      - oui
+      - ok
+      - d'accord
+      - c'est bon
+      - yes
+      - super
+      - ça marche
+
+  - intent: thanks
+    examples: |
+      - merci
+      - cimer
+
+  - intent: inform_sku
+    examples: |
+      - le sku est [REF-2024-A1](sku)
+      - c'est le [REF-2023-D4](sku)
+      - voila le code [REF-2024-E5](sku)
+      - [REF-2024-A1](sku)
+      - mon sku c'est [REF-2024-A1](sku)
+      - je prends le [REF-2023-D4](sku)
+  
+  - regex: sku
+    examples: |
+      - ^REF-\d{4}-[A-Z0-9]+$
+
+  - synonym: ordinateur
+    examples: |
+      - ordi
+      - pc
+      - laptop
+      - machine
+      - computer
+      - PC portable
+      - bécane
+      - tour
+      - éorditateur 
+      - ferraille
+
+  - synonym: téléphone
+    examples: |
+      - tel
+      - phone
+      - portable
+      - cell
+      - smartphone
+      - gsm
