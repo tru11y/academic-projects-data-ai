@@ -1,0 +1,39 @@
+# ==========================================
+# Epitech Projects - Global .gitignore
+# ==========================================
+
+# 1. Environnements Virtuels & Secrets
+.env
+.venv
+venv/
+env/
+
+# 2. Cache Python & Fichiers Compilés
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 3. Notebooks Jupyter
+.ipynb_checkpoints/
+
+# 4. Données, Datasets & Modèles (Pour éviter les gros commits)
+*.csv
+*.tsv
+*.xlsx
+/models/*
+!/models/.gitkeep
+
+# 5. Spécifique au Projet ECP (Rasa / RAG / DB Locale)
+.rasa/
+product_embeddings.db
+products.json
+
+# 6. Logs & Fichiers Temporaires
+*.log
+rasa_core_logs.log
+
+# 7. OS & Editeurs (IDE)
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -1,0 +1,12 @@
+# Projet Machine Learning – Régression
+
+## 🎯 Objectif
+Construire et évaluer un modèle de régression pour prédire une variable continue.
+
+## 🛠️ Outils utilisés
+- Python (scikit-learn, Pandas, NumPy)
+
+## 📌 Résultats
+- Préprocessing des données (nettoyage, normalisation)
+- Entraînement d’un modèle de régression linéaire
+- Évaluation avec RMSE et R²
